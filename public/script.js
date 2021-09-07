@@ -14,7 +14,7 @@ async function sendMessage () {
     msgText = textarea.value
     try {
         await axios.post('http://localhost:4000/api/v1/chat', {name: name, message: msgText})
-        getMessages()
+        // getMessages()
     } catch (error) {
         console.log(error);
     }
@@ -27,13 +27,18 @@ function addMsg (msg){
     list.appendChild(node1)
     list.appendChild(node2)
 }
-async function getMessages() {
-    try {
-        const res = await axios.get('http://localhost:4000/api/v1/chat')
-        const messages = res.data.data;
-        console.log(messages);
-        messages.forEach(addMsg);
-    } catch (error) {
-        console.error(error)
-    }
- }
+
+// async function getMessages() {
+//     try {
+//         const res = await axios.get('http://localhost:4000/api/v1/chat')
+//         const messages = res.data.data;
+//         console.log(messages);
+//         messages.forEach(addMsg);
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
+
+var socket = io("http://localhost:4000");
+
+socket.on('message', addMsg)

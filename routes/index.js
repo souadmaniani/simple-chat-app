@@ -15,7 +15,9 @@ router.post('/', async (req, res) => {
 
     try {
         await model.create(req.body)
-        res.send('message sent')
+        globalVariable.io.emit('message', req.body)
+        res.sendStatus(200);
+        
     } catch (error) {
         console.log(error);
         res.sendStatus(500);
