@@ -14,11 +14,11 @@ async function sendMessage () {
     msgText = textarea.value
     try {
         await axios.post('http://localhost:4000/api/v1/chat', {name: name, message: msgText})
-        // getMessages()
     } catch (error) {
         console.log(error);
     }
 }
+
 function addMsg (msg){
     var node1 = document.createElement("h4")
     node1.innerHTML = msg.name
@@ -26,19 +26,11 @@ function addMsg (msg){
     node2.innerHTML = msg.message
     list.appendChild(node1)
     list.appendChild(node2)
+    input.value = ''
+    textarea.value = ''
 }
-
-// async function getMessages() {
-//     try {
-//         const res = await axios.get('http://localhost:4000/api/v1/chat')
-//         const messages = res.data.data;
-//         console.log(messages);
-//         messages.forEach(addMsg);
-//     } catch (error) {
-//         console.error(error)
-//     }
-// }
-
-var socket = io("http://localhost:4000");
+// no URL when I call io(), ("http://localhost:4000")
+// it defaults to trying to connect to the host that serves the page.
+var socket = io();
 
 socket.on('message', addMsg)
