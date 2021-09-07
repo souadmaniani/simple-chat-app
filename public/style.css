@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+input:first-child {
+    margin-bottom: 1rem;
+}
+button {
+    margin-top: 1rem;
+}
