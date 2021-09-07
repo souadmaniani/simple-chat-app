@@ -1,3 +1,4 @@
+A Simple chat app build with express.js, MongoDB and socket.io
 ### Socket.io
 - Socket.IO is a JavaScript library for realtime web applications.
 - It enables realtime, bi-directional communication between web clients and server.
